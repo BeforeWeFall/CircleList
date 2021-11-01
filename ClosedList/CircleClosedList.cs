@@ -11,7 +11,7 @@ namespace ClosedList
     {
         Element<T> head;
         Element<T> current;
-
+        
         int count;
 
         public CircleClosedList()
@@ -24,24 +24,24 @@ namespace ClosedList
         {
             get
             {
-                var current = head;
-                if (index < 0 || index >= count)
-                    throw new IndexOutOfRangeException();
-                for (int i = 0; i < index; i++)
-                    current = current.Next;
-
+                var current = indx(index);
                 return current.Data;
             }
             set
             {
-                var current = head;
-                if (index < 0 || index >= count)
-                    throw new IndexOutOfRangeException();
-                for (int i = 0; i < index; i++)
-                    current = current.Next;
-
+                var current = indx(index);
                 current.Data = value;
             }
+        }
+
+        private Element<T> indx(int index) 
+        {
+            var current = head;
+            if (index < 0 || index >= count)
+                throw new IndexOutOfRangeException();
+            for (int i = 0; i < index; i++)
+                current = current.Next;
+            return current;
         }
 
         public T Head => head.Data;
@@ -71,8 +71,8 @@ namespace ClosedList
             }
             else
             {
-                element.Next = head.Prev;
-                element.Prev = head;
+                element.Next = head;
+                element.Prev = head.Prev;
                 head.Prev.Next = element;
                 head.Prev = element;
             }
@@ -163,7 +163,7 @@ namespace ClosedList
             for (int i = 0; i < step; i++)
             {
                 current = current.Prev;
-                if (current.Equals(head)) ;
+                if (current.Equals(head)) 
                     HeadReached?.Invoke(this, Head);
             }
         }
@@ -173,7 +173,7 @@ namespace ClosedList
             for (int i = 0; i < step; i++)
             {
                 current = current.Next;
-                if (current.Equals(head)) ;
+                if (current.Equals(head)) 
                 HeadReached?.Invoke(this, Head);
             }
         }
