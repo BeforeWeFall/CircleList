@@ -8,7 +8,7 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ULBelykh.NB063352\\.nuget\\packages\\": {},
+    "C:\\Users\\ULBelykh\\.nuget\\packages\\": {},
     "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -17,14 +17,14 @@
       "projectUniqueName": "C:\\Users\\ULBelykh\\source\\repos\\ClosedList\\ClosedList\\ClosedList.csproj",
       "projectName": "ClosedList",
       "projectPath": "C:\\Users\\ULBelykh\\source\\repos\\ClosedList\\ClosedList\\ClosedList.csproj",
-      "packagesPath": "C:\\Users\\ULBelykh.NB063352\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\ULBelykh\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ULBelykh\\source\\repos\\ClosedList\\ClosedList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ULBelykh.NB063352\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ULBelykh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -32,7 +32,11 @@
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\ULBelykh\\.nuget\\packages\\RowSimilarity": {},
+        "C:\\Users\\ULBelykh\\Videos": {},
+        "D:\\Package": {},
+        "D:\\Tesseract-OCR": {},
+        "D:\\Пакеты для UIpath\\Export Word Table to Excel": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
