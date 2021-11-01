@@ -1,0 +1,16 @@
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.exe
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.deps.json
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.runtimeconfig.json
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.runtimeconfig.dev.json
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.dll
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ref\ClosedList.dll
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\bin\Debug\net5.0\ClosedList.pdb
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.csproj.AssemblyReference.cache
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.AssemblyInfoInputs.cache
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.AssemblyInfo.cs
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.csproj.CoreCompileInputs.cache
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.dll
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ref\ClosedList.dll
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.pdb
+C:\Users\ULBelykh\source\repos\ClosedList\ClosedList\obj\Debug\net5.0\ClosedList.genruntimeconfig.cache
