@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClosedList
 {
-    class CircleClosedList<T> : IClosedList<T>
+    public class CircleClosedList<T> : IClosedList<T>
     {
         Element<T> head;
         Element<T> current;
@@ -32,7 +32,7 @@ namespace ClosedList
                 var current = indx(index);
                 current.Data = value;
             }
-        }
+        }//
 
         private Element<T> indx(int index) 
         {
@@ -82,6 +82,7 @@ namespace ClosedList
         public void Clear()
         {
             head = null;
+            current = null;
             count = 0;
         }
 
@@ -92,7 +93,7 @@ namespace ClosedList
 
             do
             {
-                if (current.Equals(item))
+                if (current.Data.Equals(item))
                     return true;
                 current = current.Next;
             }
@@ -133,7 +134,7 @@ namespace ClosedList
 
             do
             {
-                if (item.Equals(current))
+                if (item.Equals(current.Data))
                     return count;
                 current = current.Next;
                 count++;
@@ -155,7 +156,7 @@ namespace ClosedList
             element.Prev = current.Prev;
             current.Prev.Next = element;
             current.Prev = element;
-
+            count++;
         }
 
         public void MoveBack(int step = 1)
@@ -223,6 +224,7 @@ namespace ClosedList
 
             current.Next.Prev = current.Prev;
             current.Prev.Next = current.Next;
+            count--;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
