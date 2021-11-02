@@ -156,6 +156,7 @@ namespace ClosedList
             element.Prev = current.Prev;
             current.Prev.Next = element;
             current.Prev = element;
+            if (index == 0) head = current;
             count++;
         }
 
@@ -204,10 +205,18 @@ namespace ClosedList
                 else
                 {
                     if (head == removeItem)
+                    {
+                        if(this.current== head)
+                        {
+                            this.current = head.Next;
+                        }
                         head = head.Next;
+                    }
+                        
                     removeItem.Prev.Next = removeItem.Next;
                     removeItem.Next.Prev = removeItem.Prev;
                 }
+
                 count--;
                 return true;
             }
@@ -222,6 +231,12 @@ namespace ClosedList
             for (int i = 0; i < index; i++)
                 current = head.Next;
 
+            if (index == 0)
+            {
+                if (this.current == head)
+                    this.current = head;
+                head = head.Prev;
+            }
             current.Next.Prev = current.Prev;
             current.Prev.Next = current.Next;
             count--;
