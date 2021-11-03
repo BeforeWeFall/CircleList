@@ -44,13 +44,13 @@ namespace ClosedList
             return current;
         }
 
-        public T Head => head.Data;
+        public T Head => head is null? default(T) : head.Data;
 
-        public T Current => current.Data;
+        public T Current => current is null ? default(T) : current.Data;
 
-        public T Previous => current.Prev.Data;
+        public T Previous => current is null ? default(T) : current.Prev.Data;
 
-        public T Next => current.Next.Data;
+        public T Next => current is null ? default(T) : current.Next.Data;
 
         public int Count => count;
 
@@ -162,6 +162,14 @@ namespace ClosedList
 
         public void MoveBack(int step = 1)
         {
+            if (count == 0) return;
+
+            if (step < 0)
+            {
+                MoveNext(step * -1);
+                return;
+            }
+           
             for (int i = 0; i < step; i++)
             {
                 current = current.Prev;
@@ -172,6 +180,14 @@ namespace ClosedList
 
         public void MoveNext(int step = 1)
         {
+            if (count == 0) return;
+
+            if (step < 0)
+            {
+                MoveBack(step * -1);
+                return;
+            }
+
             for (int i = 0; i < step; i++)
             {
                 current = current.Next;
@@ -234,9 +250,11 @@ namespace ClosedList
             if (index == 0)
             {
                 if (this.current == head)
-                    this.current = head;
-                head = head.Prev;
+                    this.current = head.Next;
+                head = head.Next;
             }
+            if (current == this.current)
+                current = current.Next;
             current.Next.Prev = current.Prev;
             current.Prev.Next = current.Next;
             count--;

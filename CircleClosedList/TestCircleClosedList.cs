@@ -21,11 +21,29 @@ namespace CircleClosedList
            
             Assert.AreEqual(3, ccl.Count);
         }
-        
+        [Test]
+        public void MoveAndGetCurrentAndHead()
+        {
+            ccl = new CircleClosedList<string>();
+            var resC = ccl.Current;
+            ccl.MoveNext();
+            var resH = ccl.Head;
+            ccl.MoveBack();
+
+            Assert.Null(resH);
+            Assert.Null(resC);
+        }
+
     }
     public class TestsCircleCollection
     {
         int eventCount = 0;
+
+        private void DoSomething(object sender, string e)
+        {
+            eventCount++;
+        }
+
         CircleClosedList<string> ccl;
         [SetUp]
         public void Setup()
@@ -46,22 +64,26 @@ namespace CircleClosedList
 
             Assert.AreEqual("3", ccl[1]);
         }
+
         [Test]
         public void Head()
         {         
             Assert.AreEqual("2", ccl.Head);
         }
+
         [Test]
         public void Curren()
         {
             Assert.AreEqual("2", ccl.Current);
         }
+
         [Test]
         public void Next()
         {
             var data = ccl.Next;
             Assert.AreEqual("3", data);
         }
+
         [Test]
         public void Forward()
         {
@@ -75,24 +97,28 @@ namespace CircleClosedList
             var res = ccl.Contains("3");
             Assert.AreEqual(true,res);
         }
+
         [Test]
         public void IndexOf()
         {
             var res = ccl.IndexOf("4");
             Assert.AreEqual(2, res);
         }
+
         [Test]
         public void MoveNext()
         {
             ccl.MoveNext();
             Assert.AreEqual("3", ccl.Current);
         }
+
         [Test]
         public void MoveBack()
         {
             ccl.MoveBack();
             Assert.AreEqual("4", ccl.Current);
         }
+
         [Test]
         public void Remove()
         {
@@ -100,6 +126,7 @@ namespace CircleClosedList
             var res = ccl.Contains("2");
             Assert.False(res);
         }
+
         [Test]
         public void RemoveAt()
         {
@@ -127,22 +154,74 @@ namespace CircleClosedList
             Assert.AreEqual("3", arr[3]);
             Assert.AreEqual("4", arr[4]);
         }
-       
+
+        [Test]
+        public void ClearL()
+        {
+            ccl.Clear();
+            ccl.Add("7");
+            Assert.AreEqual("7", ccl.Current);
+            Assert.AreEqual(1, ccl.Count);
+        }
+
+        [Test]
+        public void Clear()
+        {
+            ccl.Clear();
+            Assert.IsNull(ccl.Head);
+        }
+
+        [Test]
+        public void InvokeAfterRemove()
+        {
+            ccl.RemoveAt(0);
+
+            Assert.AreEqual("3", ccl.Head);
+            Assert.AreEqual("3", ccl.Current);
+        }
+
+        [Test]
+        public void InvokeAfterRemove1()
+        {
+            ccl.RemoveAt(1);
+
+            Assert.AreEqual("2", ccl.Head);
+            Assert.AreEqual("2", ccl.Current);
+            Assert.AreEqual("4", ccl.Next);
+
+            ccl.MoveNext();
+            Assert.AreEqual("4", ccl.Current);
+        }
+
+        [Test]
+        public void MoveNextWithNegative()
+        {
+            ccl.MoveNext(-1);
+            Assert.AreEqual("4", ccl.Current);
+        }
+
+        [Test]
+        public void MoveBackWithNegative()
+        {
+            ccl.MoveBack(-1);
+            Assert.AreEqual("3", ccl.Current);
+        }
+
         [Test]
         public void EventNext()
         {
             eventCount = 0;
             ccl.HeadReached += DoSomething;
             int count = 0;
-            while (count<10)
+            while (count < 10)
             {
                 ccl.MoveNext();
                 count++;
             }
 
             Assert.AreEqual(3, eventCount);
-
         }
+
         [Test]
         public void EventBack()
         {
@@ -156,17 +235,73 @@ namespace CircleClosedList
             }
             Assert.AreEqual(3, eventCount);
         }
+
         [Test]
-        public void ClearL()
+        public void EventNextWithNegative()
         {
-            ccl.Clear();
-            ccl.Add("7");
-            Assert.AreEqual("7", ccl.Current);
-            Assert.AreEqual(1, ccl.Count);
+            eventCount = 0;
+            ccl.HeadReached += DoSomething;
+            int count = 0;
+            while (count < 10)
+            {
+                ccl.MoveNext(-1);
+                count++;
+            }
+
+            Assert.AreEqual(3, eventCount);
         }
-        private void DoSomething(object sender, string e)
+
+        [Test]
+        public void EventBackWithNegative()
         {
-            eventCount++;
+            eventCount = 0;
+            ccl.HeadReached += DoSomething;
+            int count = 0;
+            while (count < 10)
+            {
+                ccl.MoveBack(-1);
+                count++;
+            }
+            Assert.AreEqual(3, eventCount);
+        }
+
+        [Test]
+        public void EventNextThenBackWithNegative()
+        {
+            eventCount = 0;
+            ccl.HeadReached += DoSomething;
+            int count = 0;
+            while (count < 10)
+            {
+                ccl.MoveNext(-1);
+                count++;
+            }
+            while (count > 0)
+            {
+                ccl.MoveBack(-1);
+                count--;
+            }
+
+            Assert.AreEqual(7, eventCount);
+        }
+
+        [Test]
+        public void EventNextThenBack()
+        {
+            eventCount = 0;
+            ccl.HeadReached += DoSomething;
+            int count = 0;
+            while (count < 10)
+            {
+                ccl.MoveBack();
+                count++;
+            }
+            while (count > 0)
+            {
+                ccl.MoveBack();
+                count--;
+            }
+            Assert.AreEqual(6, eventCount);
         }
     }
 }
